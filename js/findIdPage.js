@@ -1,5 +1,5 @@
 function findIdEvent() {
-    var phonenumber = document.getElementById("phonenumber")
+    var phonenumber = document.getElementById("phonenumber").value
 
     if (!phonenumber) {
         alert("핸드폰 번호를 입력해주세요")
