@@ -6,16 +6,17 @@
     <title>로그인 페이지</title>
     <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
 </head>
-<body>
 
+<body>
 <div class="login-container">
-    <form class="login-form">
-        <input type="text" placeholder="아이디">
-        <input type="password" placeholder="비밀번호">
-        <a href="#">아이디를 잊으셨나요?</a>
-        <a href="#">비밀번호를 잊으셨나요?</a>
-        <button type="submit">새 계정 만들기</button>
-    </form>
+    <input id=idValue type="text" placeholder="아이디">
+    <input id=pwValue type="password" placeholder="비밀번호">
+    <input id="loginBtn" type="button" value="로그인">
+    <a href="page/findIdPage">아이디를 잊으셨나요?</a>
+    <a href="page/findPwPage">비밀번호를 잊으셨나요?</a>
+    <hr>
+    <input id="signupBtn" type="button" value="새 계정 만들기" onclick="signupPageEvent()">
 </div>
 
+<Script src="js/index.js"></Script>
 </body>

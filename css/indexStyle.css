@@ -2,48 +2,70 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;
     background-color: #f0f0f0;
 }
+
 .login-container {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.login-form {
     display: flex;
     flex-direction: column;
 }
-.login-form input {
+
+input[type="text"], input[type="password"]{
     margin-bottom: 10px;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.login-form input:focus {
+input[type="text"]:focus, input[type="password"]:focus {
     border-color: #007BFF;
     outline: none;
 }
-.login-form a {
-    color: #007BFF;
-    text-decoration: none;
-    font-size: 14px;
-    margin-bottom: 10px;
+
+#loginBtn {
+    background-color: #1877f2;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    border-color: #1877f2;
+    border-radius: 5px;
 }
-.login-form a:hover {
+#loginBtn:hover {
+    background-color: #166fe5;
+    border-color: #166fe5;
+}
+
+a {
+    text-decoration: none;
+    color: #1877f2;
+    font-size: 12px;
+    text-align: center;
+}
+
+a:hover {
     text-decoration: underline;
 }
-.login-form button {
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #28a745;
+
+hr {
+    width: 100%;
+}
+
+#signupBtn {
+    background-color: #42b72a;
     border: none;
     border-radius: 5px;
+    color: white;
     cursor: pointer;
+    width: 130px;
+    padding: 10px 0;
+    font-size: 16px;
+    margin: auto;
 }
-.login-form button:hover {
-    background-color: #218838;
+#signupBtn:hover {
+    background-color: #39a420;
 }
+
