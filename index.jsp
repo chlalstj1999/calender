@@ -11,12 +11,12 @@
 <div class="login-container">
     <input id=idValue type="text" placeholder="아이디">
     <input id=pwValue type="password" placeholder="비밀번호">
-    <input id="loginBtn" type="button" value="로그인">
+    <input id="loginBtn" type="button" value="로그인" onclick="loginEvent()">
     <a href="page/findIdPage">아이디를 잊으셨나요?</a>
     <a href="page/findPwPage">비밀번호를 잊으셨나요?</a>
     <hr>
-    <input id="signupBtn" type="button" value="새 계정 만들기" onclick="signupPageEvent()">
+    <input id="signupBtn" type="button" value="새 계정 만들기" onclick="moveToSignupPageEvent()">
 </div>
 
-<Script src="js/index.js"></Script>
+<script src="js/index.js"></script>
 </body>
