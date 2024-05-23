@@ -17,12 +17,35 @@ hr {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 20px;
+}
+
+#yearMonth {
+    display: flex;
+    flex-direction: row;
+    margin-left: 40%;
 }
 
 #yearValue, #monthValue {
     font-size: 50px;
     font-weight: bold;
+}
+
+#control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#lastYearBtn, #nextYearBtn {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#selectMonth {
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 16px;
 }
 
 table {
@@ -39,7 +62,6 @@ td {
 }
 
 td a {
-    display: block;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
