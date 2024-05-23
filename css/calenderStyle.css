@@ -1,0 +1,38 @@
+header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#logoutBtn {
+    margin-left: 10px;
+    height: 25px;
+}
+
+hr {
+    width: 100%;
+}
+
+#calenderInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#yearValue, #monthValue {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+table {
+    border: 2px solid rgb(142, 140, 140);
+    border-collapse: collapse;
+    margin: auto;
+}
+
+td {
+    border: 2px solid rgb(142, 140, 140);
+    width: 240px;
+    height: 150px;
+}

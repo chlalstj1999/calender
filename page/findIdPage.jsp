@@ -8,12 +8,12 @@
 </head>
 
 <body>
-<div>
-    <p>아이디 찾기</p>
-    <input id=phonenumber type="text" placeholder="핸드폰 번호">
-    <hr>
-    <input type="button" value="확인" onclick="findIdEvent()">
-</div>
+    <div>
+        <p>아이디 찾기</p>
+        <input id=phonenumber type="text" placeholder="핸드폰 번호">
+        <hr>
+        <input type="button" value="확인" onclick="findIdEvent()">
+    </div>
 
-<script src="../js/findIdPage.js"></script>
+    <script src="../js/findIdPage.js"></script>
 </body>
