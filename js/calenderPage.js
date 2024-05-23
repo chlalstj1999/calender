@@ -4,3 +4,64 @@ function logoutEvent() {
     }
 }
 
+var currentDate = new Date()
+var currentYear = currentDate.getFullYear()
+var currentMonth = currentDate.getMonth()
+
+generateCalender(currentYear, currentMonth)
+
+function lastYearEvent() {
+    currentYear--
+    generateCalender(currentYear, currentMonth)
+}
+
+function nextYearEvent() {
+    currentYear++
+    generateCalender(currentYear, currentMonth)
+}
+
+function moveToMonthEvent() {
+    var selectMonth = document.getElementById("selectMonth").value
+
+    currentMonth = selectMonth - 1
+    generateCalender(currentYear, currentMonth)
+}
+
+function generateCalender(year, month) {
+    var yearValue = document.getElementById("yearValue")
+    var monthValue = document.getElementById("monthValue")
+
+    yearValue.textContent = year + "년"
+    monthValue.textContent = (month + 1) + "월"
+
+    var daysInMonth
+    if ([1, 3, 5, 7, 8, 10, 12].includes(month + 1)) {
+        daysInMonth = 31;
+    } else if (month + 1 === 2) {
+        daysInMonth = 29;
+    } else {
+        daysInMonth = 30;
+    }
+
+    if (document.querySelector("table")) {
+        document.querySelector("table").remove()
+    }
+
+    var calenderTable = document.createElement("table")
+    var date = 1
+    for (var i = 0; i < 5; i++) {
+        var row = calenderTable.insertRow()
+        for (var j = 0; j < 7; j++) {
+            var cell = row.insertCell()
+            if (date <= daysInMonth) {
+                var link = document.createElement("a")
+                link.href = "detailCalenderPage.jsp?year=" + year +"&month=" + (month + 1) + "&date=" + date
+                link.textContent = date
+                cell.appendChild(link)
+                date++
+            }
+        }
+    }
+
+    document.querySelector("main").appendChild(calenderTable)
+}

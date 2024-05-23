@@ -15,11 +15,11 @@
     <hr>
     <main>
         <div id="calenderInfo">
-            <p id="yearValue">0000년</p>
-            <p id="monthValue">&nbsp#월</p>
-            <input id="lastYearBtn" type="button" value="<">
-            <input id="nextYearBtn" type="button" value=">">
-            <select>
+            <p id="yearValue"></p>
+            <p id="monthValue"></p>
+            <input id="lastYearBtn" type="button" value="<" onclick="lastYearEvent()">
+            <input id="nextYearBtn" type="button" value=">" onclick="nextYearEvent()">
+            <select id="selectMonth" onchange="moveToMonthEvent()">
                 <option value="1"> 1 </option>
                 <option value="2"> 2 </option>
                 <option value="3"> 3 </option>
@@ -34,53 +34,6 @@
                 <option value="12"> 12 </option>
             </select>월
         </div>
-        <table>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
     </main>
     <script src="../js/calenderPage.js"></script>
 </body>
