@@ -1,0 +1,42 @@
+body {
+    border: 1px solid black;
+    width: 600px;
+    margin-top: 80px;
+}
+
+header {
+    border: 1px solid black;
+    border-bottom: none;
+    width: 600px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 8px;
+    background-color: white;
+}
+
+#infoBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: blue;
+}
+
+#scheduleAddContent {
+    width: 67%;
+}
+
+main {
+    width: 600px;
+}

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
 
+<%
+    String year = request.getParameter("year");
+    String month = request.getParameter("month");
+%>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +13,8 @@
 </head>
 
 <body>
+    <input id="year" type="hidden" value="<%=year%>">
+    <input id="month" type="hidden" value="<%=month%>">
     <header>
         <p>ㅇㅇㅇ님의 일정표입니다</p>
         <input id="logoutBtn" type="button" value="로그아웃" onclick="logoutEvent()">
