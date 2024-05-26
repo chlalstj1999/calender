@@ -34,9 +34,9 @@ function generateCalender(year, month) {
     monthValue.textContent = month + "월"
 
     var daysInMonth
-    if ([1, 3, 5, 7, 8, 10, 12].includes(month + 1)) {
+    if (['1', '3', '5', '7', '8', '10', '12'].includes(month)) {
         daysInMonth = 31;
-    } else if (month + 1 === 2) {
+    } else if (month === '2') {
         daysInMonth = 29;
     } else {
         daysInMonth = 30;
