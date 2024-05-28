@@ -10,6 +10,6 @@ function findPwEvent() {
     } else if(!pattern.test(phonenumber)) {
         alert("핸드폰 번호 양식을 다시 확인해주세요")
     } else {
-        location.href="../action/findIdAction.jsp?idValue=" + idValue + "&phonenumber=" + phonenumber
+        location.href="../action/findPwAction.jsp?idValue=" + idValue + "&phonenumber=" + phonenumber
     }
 }
