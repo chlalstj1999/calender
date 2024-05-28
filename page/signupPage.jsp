@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
 
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement"%>
+
+<%
+    
+%>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +23,12 @@
             <table>
                 <tr>
                     <td>
-                        <input id="name" type="text" placeholder="이름">
+                        <input id="name" name="name" type="text" placeholder="이름">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input id="idValue" type="text" placeholder="아이디">
+                        <input id="idValue" name="idValue" type="text" placeholder="아이디">
                     </td>
                     <td>
                         <input id="idCheckBtn" type="button" value="중복체크" onclick="idCheckEvent()">
@@ -29,7 +37,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input id="pwValue" type="password" placeholder="비밀번호">
+                        <input id="pwValue" name="pwValue" type="password" placeholder="비밀번호">
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +47,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input id="phonenumber" type="text" placeholder="핸드폰 번호">
+                        <input id="phonenumber" name="phonenumber" type="text" placeholder="핸드폰 번호">
                     </td>
                     <td>
                         <input id="phonenumberBtn" type="button" value="중복체크" onclick="phonenumberCheckEvent()">
@@ -48,16 +56,18 @@
                 </tr>
                 <tr>
                     <td>
+                        <%-- createElement 처리하기 --%>
                         부서
-                        <input type="radio" value="planningTeam"> 기획팀
-                        <input type="radio" value="developmentTeam"> 개발팀
+                        <input name=department type="radio" value="기획팀"> 기획팀
+                        <input name=department type="radio" value="개발팀"> 개발팀
                     </td>
                 </tr>
                 <tr>
                     <td>
                         직급
-                        <input type="radio" value="leader"> 팀장
-                        <input type="radio" value="member"> 팀원
+                        <%-- createElement 처리하기 --%>
+                        <input name=rank type="radio" value="팀장"> 팀장
+                        <input name=rank type="radio" value="팀원"> 팀원
                     </td>
                 </tr>
             </table>
@@ -65,5 +75,7 @@
         </form>
     </div>
 
-<script src="../js/signupPage.js"></script>
+    <script src="../js/signupPage.js">
+        
+    </script>
 </body>

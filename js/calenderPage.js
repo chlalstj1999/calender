@@ -11,19 +11,19 @@ generateCalender(currentYear, currentMonth)
 
 function lastYearEvent() {
     currentYear--
-    generateCalender(currentYear, currentMonth)
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth
 }
 
 function nextYearEvent() {
     currentYear++
-    generateCalender(currentYear, currentMonth)
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth
 }
 
 function moveToMonthEvent() {
     var selectMonth = document.getElementById("selectMonth").value
 
     currentMonth = selectMonth
-    generateCalender(currentYear, currentMonth)
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth
 }
 
 function generateCalender(year, month) {
@@ -64,3 +64,8 @@ function generateCalender(year, month) {
 
     document.querySelector("main").appendChild(calenderTable)
 }
+
+// var scheduleCount = document.createElement("p")
+// scheduleCount.textContent = "일정 n개"
+// cell.appendChild(scheduleCount)
+// scheduleCount.style.backgroundColor = "blue"

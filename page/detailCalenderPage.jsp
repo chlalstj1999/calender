@@ -113,45 +113,7 @@
         </div>
     </header>
     <main>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
-        <div>dsfasdfsaf</div>
+        
     </main>
     <script src="../js/detailCalenderPage.js"></script>
 </body>

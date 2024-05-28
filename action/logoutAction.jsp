@@ -9,5 +9,7 @@
 
 <body>
    
-    <script src="../js/logoutAction.js"></script>
+    <script>
+    
+    </script>
 </body>
