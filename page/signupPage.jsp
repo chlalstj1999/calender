@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
 
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement"%>
-
-<%
-    
-%>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +48,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <%-- createElement 처리하기 --%>
                         부서
                         <input name=department type="radio" value="기획팀"> 기획팀
                         <input name=department type="radio" value="개발팀"> 개발팀
@@ -65,7 +56,6 @@
                 <tr>
                     <td>
                         직급
-                        <%-- createElement 처리하기 --%>
                         <input name=rank type="radio" value="팀장"> 팀장
                         <input name=rank type="radio" value="팀원"> 팀원
                     </td>

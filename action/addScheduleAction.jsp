@@ -10,7 +10,7 @@
     String errorMessage = null;
     String year = null;
     String month = null;
-    String date = null;
+    String day = null;
 
     try {
         String dateTime = request.getParameter("dateTime");
@@ -20,7 +20,7 @@
         String[] dateParts = dateTime.substring(0, 10).split("-");
         year = dateParts[0];
         month = dateParts[1];
-        date = dateParts[2];
+        day = dateParts[2];
 
         if (accountIdx == null) {
             throw new Exception("로그인 후 이용해주세요");
@@ -53,7 +53,7 @@
 <body>
     <% if (errorMessage == null) { %>
         <script>
-            location.href = "../page/detailCalenderPage.jsp?year=<%=year%>&month=<%=month%>&date=<%=date%>"
+            location.href = "../page/detailCalenderPage.jsp?year=<%=year%>&month=<%=month%>&day=<%=day%>"
         </script>
     <% } else { %>
         <script>

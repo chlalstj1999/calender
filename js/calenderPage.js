@@ -55,6 +55,8 @@ function generateCalender(year, month) {
             var dayField = document.getElementById(day)
             if (dayField) {
                 var count = dayField.value
+                month = month.toString().padStart(2, "0")
+                day = day.toString().padStart(2, "0")
                 link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
                 link.textContent = day
                 schedule.textContent = "일정 개수: " + count
@@ -63,6 +65,8 @@ function generateCalender(year, month) {
                 cell.appendChild(link)
                 cell.appendChild(schedule)
             } else {
+                month = month.toString().padStart(2, "0")
+                day = day.toString().padStart(2, "0")
                 link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
                 link.textContent = day
                 cell.appendChild(link)

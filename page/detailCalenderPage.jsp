@@ -16,14 +16,6 @@
     ResultSet result = null;
     String date = year + "-" + month + "-" + day;
 
-    // if (accountIdx == null) {
-    //     throw new Exception("로그인 후 이용해주세요");
-    // } else if (dateTime == null) {
-    //     throw new Exception("일정 시간을 선택해주세요");
-    // } else if (content == null) {
-    //     throw new Exception("일정 내용을 입력해주세요");
-    // }
-
     Class.forName("org.mariadb.jdbc.Driver");
     Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
 
