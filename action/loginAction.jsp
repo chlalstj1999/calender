@@ -24,7 +24,7 @@
         Class.forName("org.mariadb.jdbc.Driver");
         Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
 
-        String sql = "SELECT idx FROM account WHERE id=? AND password=?";
+        String sql = "SELECT idx, department, rank FROM account WHERE id=? AND password=?";
         PreparedStatement query = connect.prepareStatement(sql);
 
         query.setString(1, idValue);
@@ -35,6 +35,8 @@
         if (result.next()) {
             isLoginSuccess = true;
             session.setAttribute("accountIdx", result.getInt(1));
+            session.setAttribute("department", result.getString(2));
+            session.setAttribute("rank", result.getString(3));
         } else {
             errorMessage = "아이디 또는 비밀번호가 틀렸습니다";
         }

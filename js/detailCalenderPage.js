@@ -7,5 +7,9 @@ function addScheduleEvent() {
     var content = document.getElementById("content").value
     var dateTime = year + "-" + month + "-" + date + " " + hour + ":" + minute
     
-    location.href = "../action/addScheduleAction.jsp?dateTime=" + dateTime + "&content=" + content
+    if (!content) {
+        alert("일정 내용을 입력해주세요")
+    } else {
+        location.href = "../action/addScheduleAction.jsp?dateTime=" + dateTime + "&content=" + content
+    }
 }

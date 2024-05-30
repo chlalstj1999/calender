@@ -19,8 +19,8 @@
         
         String[] dateParts = dateTime.substring(0, 10).split("-");
         year = dateParts[0];
-        month = String.format("%02d", Integer.parseInt(dateParts[1]));
-        date = String.format("%02d", Integer.parseInt(dateParts[2]));
+        month = dateParts[1];
+        date = dateParts[2];
 
         if (accountIdx == null) {
             throw new Exception("로그인 후 이용해주세요");

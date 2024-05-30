@@ -1,9 +1,43 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
 
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+
 <%
     String year = request.getParameter("year");
     String month = request.getParameter("month");
     String date = request.getParameter("date");
+    Integer accountIdx = (Integer)session.getAttribute("accountIdx");
+    String department = (String)session.getAttribute("department");
+    String rank = (String)session.getAttribute("rank");
+    ResultSet result = null;
+
+    // if (accountIdx == null) {
+    //     throw new Exception("로그인 후 이용해주세요");
+    // } else if (dateTime == null) {
+    //     throw new Exception("일정 시간을 선택해주세요");
+    // } else if (content == null) {
+    //     throw new Exception("일정 내용을 입력해주세요");
+    // }
+
+    Class.forName("org.mariadb.jdbc.Driver");
+    Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
+
+    if (rank.equals("팀장")) {
+        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx, account.name FROM schedule JOIN account ON schedule.account_idx = account.idx WHERE account.department = ? ORDER BY time;";
+        PreparedStatement query = connect.prepareStatement(sql);
+        query.setString(1, department);
+
+        result = query.executeQuery();
+    } else {
+        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx FROM schedule JOIN account ON account_idx = ?";
+        PreparedStatement query = connect.prepareStatement(sql);
+        query.setInt(1, accountIdx);
+
+        result = query.executeQuery();
+    }
 %>
 
 <head>
@@ -116,7 +150,22 @@
         </div>
     </header>
     <main>
-        
+        <% while(result.next()) { %>
+            <% if (result.getInt(4) == accountIdx) { %>
+                <div id="schedule">
+                <%=result.getString(1)%><br>
+                <%=result.getString(2)%>시 <%=result.getString(3)%>분
+                </div>
+                <input type="button" value="수정" onclick="updateScheduleEvent()">
+                <input type="button" value="삭제" onclick="deleteScheduleEvent()">
+            <% } else { %>
+                <div id="schedule">
+                    <p><%=result.getString(5)%>님</p>
+                    <p><%=result.getString(1)%></p>
+                    <p><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
+                </div>
+            <% } %>
+        <% } %>
     </main>
     <script src="../js/detailCalenderPage.js"></script>
 </body>

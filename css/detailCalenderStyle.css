@@ -40,3 +40,9 @@ a:hover {
 main {
     width: 600px;
 }
+
+#schedule {
+    background-color: blue;
+    color: white;
+    margin-bottom: 5px;
+}
