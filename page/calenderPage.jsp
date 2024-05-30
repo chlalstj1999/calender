@@ -15,6 +15,8 @@
     String username = null;
     String scheduleCount = null;
 
+    session.setAttribute("isMemberInclude", isMemberInclude);
+    
     Class.forName("org.mariadb.jdbc.Driver");
     Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
 

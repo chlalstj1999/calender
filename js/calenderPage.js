@@ -44,7 +44,7 @@ function generateCalender(year, month) {
     }
 
     var calenderTable = document.createElement("table")
-    var date = 1
+    var day = 1
 
     for (var i = 0; i < 5; i++) {
         var row = calenderTable.insertRow()
@@ -52,22 +52,22 @@ function generateCalender(year, month) {
             var cell = row.insertCell()
             var link = document.createElement("a")
             var schedule = document.createElement("p")
-            var dayField = document.getElementById(date)
+            var dayField = document.getElementById(day)
             if (dayField) {
                 var count = dayField.value
-                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&date=" + date + "&isMemberInclude=" + isMemberInclude
-                link.textContent = date
+                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
+                link.textContent = day
                 schedule.textContent = "일정 개수: " + count
                 schedule.style.backgroundColor = "blue"
                 schedule.style.color = "white"
                 cell.appendChild(link)
                 cell.appendChild(schedule)
             } else {
-                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&date=" + date + "&isMemberInclude=" + isMemberInclude
-                link.textContent = date
+                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
+                link.textContent = day
                 cell.appendChild(link)
             }
-            date++
+            day++
         }
 
     document.querySelector("main").appendChild(calenderTable)

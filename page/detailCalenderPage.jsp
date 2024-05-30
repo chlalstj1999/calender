@@ -6,14 +6,15 @@
 <%@ page import="java.sql.ResultSet" %>
 
 <%
-    String isMemberInclude = request.getParameter("isMemberInclude");
+    String isMemberInclude = (String)session.getAttribute("isMemberInclude");
     String year = request.getParameter("year");
     String month = request.getParameter("month");
-    String date = request.getParameter("date");
+    String day = request.getParameter("day");
     Integer accountIdx = (Integer)session.getAttribute("accountIdx");
     String department = (String)session.getAttribute("department");
     String rank = (String)session.getAttribute("rank");
     ResultSet result = null;
+    String date = year + "-" + month + "-" + day;
 
     // if (accountIdx == null) {
     //     throw new Exception("로그인 후 이용해주세요");
@@ -27,15 +28,17 @@
     Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
 
     if (isMemberInclude.equals("memberInclude")) {
-        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx, account.name FROM schedule JOIN account ON schedule.account_idx = account.idx WHERE account.department = ? ORDER BY time;";
+        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx, account.name, schedule.idx FROM schedule JOIN account ON schedule.account_idx = account.idx WHERE account.department = ? AND DATE(schedule.time)=? ORDER BY time;";
         PreparedStatement query = connect.prepareStatement(sql);
         query.setString(1, department);
+        query.setString(2, date);
 
         result = query.executeQuery();
     } else {
-        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx FROM schedule JOIN account ON schedule.account_idx = account.idx WHERE account.idx = ? ORDER BY time;";
+        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx, account.name, schedule.idx FROM schedule JOIN account ON schedule.account_idx = account.idx WHERE account.idx = ? AND DATE(schedule.time)=? ORDER BY time;";
         PreparedStatement query = connect.prepareStatement(sql);
         query.setInt(1, accountIdx);
+        query.setString(2, date);
 
         result = query.executeQuery();
     }
@@ -51,11 +54,12 @@
 <body>
     <input id="year" type="hidden" value=<%=year%>>
     <input id="month" type="hidden" value=<%=month%>>
+    <input id="day" type="hidden" value=<%=day%>>
     <input id="date" type="hidden" value=<%=date%>>
     <header>
         <div id="infoBox">
-            <p><%=month%>월 <%=date%>일</p>
-            <a href="calenderPage.jsp?year=<%=year%>&month=<%=month%>">[달력 보기]</a>
+            <p><%=month%>월 <%=day%>일</p>
+            <a href="calenderPage.jsp?year=<%=year%>&month=<%=month%>&isMemberInclude=<%=isMemberInclude%>">[달력 보기]</a>
         </div>
         <div>
             <select id="hour">
@@ -154,8 +158,8 @@
         <% while(result.next()) { %>
             <% if (result.getInt(4) == accountIdx) { %>
                 <div id="schedule">
-                <%=result.getString(1)%><br>
-                <%=result.getString(2)%>시 <%=result.getString(3)%>분
+                <p><%=result.getString(1)%></p>
+                <p id="time"><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
                 </div>
                 <input type="button" value="수정" onclick="updateScheduleEvent()">
                 <input type="button" value="삭제" onclick="deleteScheduleEvent()">
@@ -166,6 +170,7 @@
                     <p><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
                 </div>
             <% } %>
+            <input id="scheduleIdx" type="hidden" value=<%=result.getString(6)%>>
         <% } %>
     </main>
     <script src="../js/detailCalenderPage.js"></script>

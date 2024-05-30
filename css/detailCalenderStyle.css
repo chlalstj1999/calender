@@ -46,3 +46,8 @@ main {
     color: white;
     margin-bottom: 5px;
 }
+
+#time {
+    color: grey;
+    font-size: 14px;
+}
