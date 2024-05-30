@@ -4,6 +4,7 @@
     String year = request.getParameter("year");
     String month = request.getParameter("month");
     String date = request.getParameter("date");
+    
 %>
 
 <head>
@@ -14,13 +15,16 @@
 </head>
 
 <body>
+    <input id="year" type="hidden" value=<%=year%>>
+    <input id="month" type="hidden" value=<%=month%>>
+    <input id="date" type="hidden" value=<%=date%>>
     <header>
         <div id="infoBox">
             <p><%=month%>월 <%=date%>일</p>
             <a href="calenderPage.jsp?year=<%=year%>&month=<%=month%>">[달력 보기]</a>
         </div>
         <div>
-            <select>
+            <select id="hour">
             <option value="00">00시</option>
             <option value="01">01시</option>
             <option value="02">02시</option>
@@ -46,7 +50,7 @@
             <option value="22">22시</option>
             <option value="23">23시</option>
             </select>
-            <select>
+            <select id="minute">
                 <option value="00">00분</option>
                 <option value="01">01분</option>
                 <option value="02">02분</option>
@@ -108,8 +112,8 @@
                 <option value="58">58분</option>
                 <option value="59">59분</option>
             </select>
-            <input id="scheduleAddContent" type="text" placeholder="일정 내용">
-            <input id="scheduleAddBtn" type="button" value="일정 추가">
+            <input id="content" type="text" placeholder="일정 내용">
+            <input id="scheduleAddBtn" type="button" value="일정 추가" onclick="addScheduleEvent()">
         </div>
     </header>
     <main>

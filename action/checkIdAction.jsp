@@ -8,7 +8,7 @@
 <%
     request.setCharacterEncoding("utf-8");
 
-    String idValue = request.getParameter("id");
+    String idValue = request.getParameter("idValue");
     boolean isDuplicate = false;
 
     Class.forName("org.mariadb.jdbc.Driver");

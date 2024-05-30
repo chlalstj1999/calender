@@ -1,8 +1,28 @@
 <%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
 
-<%
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+
+<%  
+    Integer accountIdx = (Integer)session.getAttribute("accountIdx");
     String year = request.getParameter("year");
     String month = request.getParameter("month");
+    String username = null;
+
+    Class.forName("org.mariadb.jdbc.Driver");
+    Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
+
+    String sql = "SELECT name FROM account WHERE idx=?;";
+    PreparedStatement query = connect.prepareStatement(sql);
+    query.setInt(1, accountIdx);
+
+    ResultSet result = query.executeQuery();
+
+    if (result.next()) {
+        username = result.getString(1);
+    }
 %>
 
 <head>
@@ -16,7 +36,7 @@
     <input id="year" type="hidden" value="<%=year%>">
     <input id="month" type="hidden" value="<%=month%>">
     <header>
-        <p>ㅇㅇㅇ님의 일정표입니다</p>
+        <p><%=username%>님의 일정표입니다</p>
         <input id="logoutBtn" type="button" value="로그아웃" onclick="logoutEvent()">
     </header>
     <hr>
