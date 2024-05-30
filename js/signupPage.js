@@ -9,7 +9,7 @@ function idCheckEvent() {
         console.log(idValue)
         console.log(pattern.test(idValue))
     } else {
-        window.open("../action/checkIdAction.jsp?id=" + idValue, "idCheckWin", "width=500 height=200")
+        window.open("../action/checkIdAction.jsp?idValue=" + idValue, "idCheckWin", "width=500 height=200")
     }
 }
 

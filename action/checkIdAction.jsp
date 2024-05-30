@@ -8,20 +8,30 @@
 <%
     request.setCharacterEncoding("utf-8");
 
-    String idValue = request.getParameter("idValue");
     boolean isDuplicate = false;
+    String errorMessage = null;
 
-    Class.forName("org.mariadb.jdbc.Driver");
-    Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
+    try {
+        String idValue = request.getParameter("idValue");
+        
+        if (idValue == null) {
+            throw new Exception("아이디를 입력해주세요");
+        }
 
-    String sql = "SELECT id FROM account WHERE id=?;";
-    PreparedStatement query = connect.prepareStatement(sql);
-    query.setString(1, idValue);
+        Class.forName("org.mariadb.jdbc.Driver");
+        Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
 
-    ResultSet result = query.executeQuery();
+        String sql = "SELECT id FROM account WHERE id=?;";
+        PreparedStatement query = connect.prepareStatement(sql);
+        query.setString(1, idValue);
 
-    if (result.next()) {
-        isDuplicate = true;
+        ResultSet result = query.executeQuery();
+
+        if (result.next()) {
+            isDuplicate = true;
+        }
+    } catch (Exception e) {
+        errorMessage = e.getMessage();
     }
 %>
 
@@ -31,17 +41,23 @@
     <title>Document</title>
 </head>
 <body>
-    <% if (isDuplicate) { %>
-        <p>이미 사용중인 아이디입니다</p>
-    <% } else { %>
-        <p>사용 가능한 아이디입니다</p>
-    <% } %>
-    <input type=button value="확인" onclick="closeWindowEvent()">
+    <% if (errorMessage == null) { %>
+        <% if (isDuplicate) { %>
+            <p>이미 사용중인 아이디입니다</p>
+        <% } else { %>
+            <p>사용 가능한 아이디입니다</p>
+        <% } %>
+        <input type=button value="확인" onclick="closeWindowEvent()">
 
-    <script>
-        function closeWindowEvent() {
-            window.opener.idDuplicate(<%=isDuplicate%>)
-            window.close()
-        }
-    </script>
+        <script>
+            function closeWindowEvent() {
+                window.opener.idDuplicate(<%=isDuplicate%>)
+                window.close()
+            }
+        </script>
+    <% } else { %>
+        <script>
+            alert("<%=errorMessage%>")
+        </script>
+    <% } %>
 </body>

@@ -11,17 +11,27 @@
     String phonenumberValue = request.getParameter("phonenumber");
     boolean isDuplicate = false;
 
-    Class.forName("org.mariadb.jdbc.Driver");
-    Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
+    try {
+        String phonenumberValue = request.getParameter("phonenumber");
 
-    String sql = "SELECT phonenumber FROM account WHERE phonenumber=?;";
-    PreparedStatement query = connect.prepareStatement(sql);
-    query.setString(1, phonenumberValue);
+        if (phonenumberValue == null) {
+            throw new Exception("핸드폰 번호를 입력해주세요");
+        }
 
-    ResultSet result = query.executeQuery();
+        Class.forName("org.mariadb.jdbc.Driver");
+        Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
 
-    if (result.next()) {
-        isDuplicate = true;
+        String sql = "SELECT phonenumber FROM account WHERE phonenumber=?;";
+        PreparedStatement query = connect.prepareStatement(sql);
+        query.setString(1, phonenumberValue);
+
+        ResultSet result = query.executeQuery();
+
+        if (result.next()) {
+            isDuplicate = true;
+        }
+    } catch (Exception e) {
+        errorMessage = e.getMessage();
     }
 %>
 
@@ -31,17 +41,23 @@
     <title>Document</title>
 </head>
 <body>
-    <% if (isDuplicate) { %>
-        <p>이미 사용중인 전화번호입니다</p>
-    <% } else { %>
-        <p>사용 가능한 전화번호입니다</p>
-    <% } %>
-    <input type=button value="확인" onclick="closeWindowEvent()">
+    <% if (errorMessage == null) { %>
+        <% if (isDuplicate) { %>
+            <p>이미 사용중인 전화번호입니다</p>
+        <% } else { %>
+            <p>사용 가능한 전화번호입니다</p>
+        <% } %>
+        <input type=button value="확인" onclick="closeWindowEvent()">
 
-    <script>
-        function closeWindowEvent() {
-            window.opener.phonenumberDuplicate(<%=isDuplicate%>)
-            window.close()
-        }
-    </script>
+        <script>
+            function closeWindowEvent() {
+                window.opener.phonenumberDuplicate(<%=isDuplicate%>)
+                window.close()
+            }
+        </script>
+    <% } else { %>
+        <script>
+            alert("<%=errorMessage%>")
+        </script>
+    <% } %>
 </body>
