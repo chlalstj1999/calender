@@ -8,8 +8,8 @@
 <%
     request.setCharacterEncoding("utf-8");
 
-    String phonenumberValue = request.getParameter("phonenumber");
     boolean isDuplicate = false;
+    String errorMessage = null;
 
     try {
         String phonenumberValue = request.getParameter("phonenumber");
