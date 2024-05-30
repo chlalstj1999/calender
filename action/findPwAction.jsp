@@ -9,12 +9,13 @@
 <%
     request.setCharacterEncoding("utf-8");
 
-    String idValue = request.getParameter("idValue");
-    String phonenumber = request.getParameter("phonenumber");
     ResultSet result = null;
     String errorMessage = null;
 
     try {
+        String idValue = request.getParameter("idValue");
+        String phonenumber = request.getParameter("phonenumber");
+        
         if (idValue == "") {
             throw new Exception("아이디를 입력해주세요.");
         } else if (phonenumber == "") {

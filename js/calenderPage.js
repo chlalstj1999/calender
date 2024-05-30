@@ -54,6 +54,8 @@ function generateCalender(year, month) {
             var cell = row.insertCell()
             if (date <= daysInMonth) {
                 var link = document.createElement("a")
+                month = String(month).padStart(2, '0')
+                date = String(date).padStart(2, '0')
                 link.href = "detailCalenderPage.jsp?year=" + year +"&month=" + month + "&date=" + date
                 link.textContent = date
                 cell.appendChild(link)

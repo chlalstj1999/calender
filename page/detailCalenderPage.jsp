@@ -4,7 +4,6 @@
     String year = request.getParameter("year");
     String month = request.getParameter("month");
     String date = request.getParameter("date");
-    
 %>
 
 <head>
