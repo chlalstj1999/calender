@@ -6,24 +6,25 @@ function logoutEvent() {
 
 var currentYear = document.getElementById("year").value
 var currentMonth = document.getElementById("month").value
-
-generateCalender(currentYear, currentMonth)
+var rank = document.getElementById("rank").value
+var isMemberInclude = document.getElementById("isMemberInclude").value
+console.log(isMemberInclude)
 
 function lastYearEvent() {
     currentYear--
-    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth + "&isMemberInclude=" + isMemberInclude
 }
 
 function nextYearEvent() {
     currentYear++
-    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth + "&isMemberInclude=" + isMemberInclude
 }
 
 function moveToMonthEvent() {
     var selectMonth = document.getElementById("selectMonth").value
 
     currentMonth = selectMonth
-    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth + "&isMemberInclude=" + isMemberInclude
 }
 
 function generateCalender(year, month) {
@@ -37,37 +38,50 @@ function generateCalender(year, month) {
     if (['1', '3', '5', '7', '8', '10', '12'].includes(month)) {
         daysInMonth = 31;
     } else if (month === '2') {
-        daysInMonth = 29;
+        daysInMonth = (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) ? 29 : 28
     } else {
         daysInMonth = 30;
     }
 
-    if (document.querySelector("table")) {
-        document.querySelector("table").remove()
-    }
-
     var calenderTable = document.createElement("table")
     var date = 1
+
     for (var i = 0; i < 5; i++) {
         var row = calenderTable.insertRow()
         for (var j = 0; j < 7; j++) {
             var cell = row.insertCell()
-            if (date <= daysInMonth) {
-                var link = document.createElement("a")
-                month = String(month).padStart(2, '0')
-                date = String(date).padStart(2, '0')
-                link.href = "detailCalenderPage.jsp?year=" + year +"&month=" + month + "&date=" + date
+            var link = document.createElement("a")
+            var schedule = document.createElement("p")
+            var dayField = document.getElementById(date)
+            if (dayField) {
+                var count = dayField.value
+                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&date=" + date + "&isMemberInclude=" + isMemberInclude
+                link.textContent = date
+                schedule.textContent = "일정 개수: " + count
+                schedule.style.backgroundColor = "blue"
+                schedule.style.color = "white"
+                cell.appendChild(link)
+                cell.appendChild(schedule)
+            } else {
+                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&date=" + date + "&isMemberInclude=" + isMemberInclude
                 link.textContent = date
                 cell.appendChild(link)
-                date++
             }
+            date++
         }
-    }
 
     document.querySelector("main").appendChild(calenderTable)
+    }
 }
 
-// var scheduleCount = document.createElement("p")
-// scheduleCount.textContent = "일정 n개"
-// cell.appendChild(scheduleCount)
-// scheduleCount.style.backgroundColor = "blue"
+generateCalender(currentYear, currentMonth)
+
+function includeMemberScheduleEvent() {
+    isMemberInclude = "memberInclude"
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth + "&isMemberInclude=" + isMemberInclude
+}
+
+function excludeMemberScheduleEvent() {
+    isMemberInclude = "memberExclude"
+    location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth + "&isMemberInclude=" + isMemberInclude
+}

@@ -13,6 +13,7 @@
 
     String idValue = request.getParameter("idValue");
     String pwValue = request.getParameter("pwValue");
+    ResultSet result = null;
 
     try {
         if (idValue == "") {
@@ -30,7 +31,7 @@
         query.setString(1, idValue);
         query.setString(2, pwValue);
 
-        ResultSet result = query.executeQuery();
+        result = query.executeQuery();
 
         if (result.next()) {
             isLoginSuccess = true;
@@ -57,11 +58,10 @@
             location.href = "../index.jsp"
         } else {
             var date = new Date()
-        var year = date.getFullYear()
-        var month = date.getMonth()
+            var year = date.getFullYear()
+            var month = date.getMonth()
 
-        location.href = "../page/calenderPage.jsp?year=" + year + "&month=" + (month + 1)
+            location.href = "../page/calenderPage.jsp?year=" + year + "&month=" + (month + 1) + "&isMemberInclude=memberExclude"
         }
-
     </script>
 </body>

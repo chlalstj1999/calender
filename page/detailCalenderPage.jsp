@@ -6,6 +6,7 @@
 <%@ page import="java.sql.ResultSet" %>
 
 <%
+    String isMemberInclude = request.getParameter("isMemberInclude");
     String year = request.getParameter("year");
     String month = request.getParameter("month");
     String date = request.getParameter("date");
@@ -25,14 +26,14 @@
     Class.forName("org.mariadb.jdbc.Driver");
     Connection connect = DriverManager.getConnection("jdbc:mariadb://localhost:3306/calender", "stageus", "1234");
 
-    if (rank.equals("팀장")) {
+    if (isMemberInclude.equals("memberInclude")) {
         String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx, account.name FROM schedule JOIN account ON schedule.account_idx = account.idx WHERE account.department = ? ORDER BY time;";
         PreparedStatement query = connect.prepareStatement(sql);
         query.setString(1, department);
 
         result = query.executeQuery();
     } else {
-        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx FROM schedule JOIN account ON account_idx = ?";
+        String sql = "SELECT content, HOUR(time), MINUTE(time), account_idx FROM schedule JOIN account ON schedule.account_idx = account.idx WHERE account.idx = ? ORDER BY time;";
         PreparedStatement query = connect.prepareStatement(sql);
         query.setInt(1, accountIdx);
 
