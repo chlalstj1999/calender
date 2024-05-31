@@ -33,7 +33,7 @@ a:hover {
     color: blue;
 }
 
-#content {
+#contentInput {
     width: 67%;
 }
 
@@ -41,13 +41,13 @@ main {
     width: 600px;
 }
 
-#schedule {
+.schedule {
     background-color: blue;
     color: white;
     margin-bottom: 5px;
 }
 
-#time {
+.time {
     color: grey;
     font-size: 14px;
 }

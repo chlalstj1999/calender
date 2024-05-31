@@ -75,7 +75,7 @@
                 <a href="calenderPage.jsp?year=<%=year%>&month=<%=month%>&isMemberInclude=<%=isMemberInclude%>">[달력 보기]</a>
             </div>
             <div>
-                <select id="hour">
+                <select id="hourSelect">
                 <option value="00">00시</option>
                 <option value="01">01시</option>
                 <option value="02">02시</option>
@@ -101,7 +101,7 @@
                 <option value="22">22시</option>
                 <option value="23">23시</option>
                 </select>
-                <select id="minute">
+                <select id="minuteSelect">
                     <option value="00">00분</option>
                     <option value="01">01분</option>
                     <option value="02">02분</option>
@@ -163,27 +163,26 @@
                     <option value="58">58분</option>
                     <option value="59">59분</option>
                 </select>
-                <input id="content" type="text" placeholder="일정 내용">
+                <input id="contentInput" type="text" placeholder="일정 내용">
                 <input id="scheduleAddBtn" type="button" value="일정 추가" onclick="addScheduleEvent()">
             </div>
         </header>
         <main>
             <% while(result.next()) { %>
                 <% if (result.getInt(4) == accountIdx) { %>
-                    <div id="schedule">
-                    <p><%=result.getString(1)%></p>
-                    <p id="time"><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
+                    <div class="schedule" id=<%=result.getString(6)%>>
+                        <p class="content" id=content_<%=result.getString(6)%>><%=result.getString(1)%></p>
+                        <p class="time" id=time_<%=result.getString(6)%>><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
                     </div>
-                    <input type="button" value="수정" onclick="updateScheduleEvent()">
-                    <input type="button" value="삭제" onclick="deleteScheduleEvent()">
+                    <input id=updateBtn_<%=result.getString(6)%> type="button" value="수정" onclick="updateScheduleEvent('<%=result.getString(1)%>', <%=result.getString(2)%>, <%=result.getString(3)%>, <%=result.getString(6)%>)">
+                    <input id=deleteBtn_<%=result.getString(6)%> type="button" value="삭제" onclick="deleteScheduleEvent()">
                 <% } else { %>
-                    <div id="schedule">
+                    <div class="schedule">
                         <p><%=result.getString(5)%>님</p>
                         <p><%=result.getString(1)%></p>
-                        <p><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
+                        <p class="time"><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
                     </div>
                 <% } %>
-                <input id="scheduleIdx" type="hidden" value=<%=result.getString(6)%>>
             <% } %>
         </main>
         <script src="../js/detailCalenderPage.js"></script>
