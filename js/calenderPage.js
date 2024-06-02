@@ -50,28 +50,30 @@ function generateCalender(year, month) {
         var row = calenderTable.insertRow()
         for (var j = 0; j < 7; j++) {
             var cell = row.insertCell()
-            var link = document.createElement("a")
-            var schedule = document.createElement("p")
-            var dayField = document.getElementById(day)
-            if (dayField) {
-                var count = dayField.value
-                month = month.toString().padStart(2, "0")
-                day = day.toString().padStart(2, "0")
-                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
-                link.textContent = day
-                schedule.textContent = "일정 개수: " + count
-                schedule.style.backgroundColor = "blue"
-                schedule.style.color = "white"
-                cell.appendChild(link)
-                cell.appendChild(schedule)
-            } else {
-                month = month.toString().padStart(2, "0")
-                day = day.toString().padStart(2, "0")
-                link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
-                link.textContent = day
-                cell.appendChild(link)
+            if (day <= daysInMonth) {
+                var link = document.createElement("a")
+                var dayField = document.getElementById(day)
+                if (dayField) {
+                    var count = dayField.value
+                    var schedule = document.createElement("p")
+                    month = month.toString().padStart(2, "0")
+                    day = day.toString().padStart(2, "0")
+                    link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
+                    link.textContent = day
+                    schedule.textContent = "일정 개수: " + count
+                    schedule.style.backgroundColor = "blue"
+                    schedule.style.color = "white"
+                    cell.appendChild(link)
+                    cell.appendChild(schedule)
+                } else {
+                    month = month.toString().padStart(2, "0")
+                    day = day.toString().padStart(2, "0")
+                    link.href = "detailCalenderPage.jsp?year=" + year + "&month=" + month + "&day=" + day + "&isMemberInclude=" + isMemberInclude
+                    link.textContent = day
+                    cell.appendChild(link)
+                }
+                day++
             }
-            day++
         }
 
     document.querySelector("main").appendChild(calenderTable)

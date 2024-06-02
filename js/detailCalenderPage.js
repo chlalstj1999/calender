@@ -72,13 +72,12 @@ function updateScheduleEvent(content, hour, minute, idx) {
     }
 }
 
-function deleteScheduleEvent() {
+function deleteScheduleEvent(idx) {
     var year = document.getElementById("year").value
     var month = document.getElementById("month").value
     var day = document.getElementById("day").value
 
     if (confirm("정말 삭제하시겠습니까?")) {
-        var scheduleIdx = document.getElementById("scheduleIdx").value
-        location.href="../action/deleteScheduleAction.jsp?scheduleIdx=" + scheduleIdx + "&year=" + year + "&month=" + month + "&day=" + day
+        location.href="../action/deleteScheduleAction.jsp?scheduleIdx=" + idx + "&year=" + year + "&month=" + month + "&day=" + day
     }
 }

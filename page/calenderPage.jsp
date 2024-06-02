@@ -79,10 +79,10 @@
         <input id="month" type="hidden" value="<%=month%>">
         <input id="rank" type="hidden" value="<%=rank%>">
         <input id="isMemberInclude" type="hidden" value="<%=isMemberInclude%>">
-
         <% while(result.next()) { %>
-            <input id="<%=result.getString(1)%>" type="hidden" value="<%=result.getString(2)%>">
+            <input id=<%=result.getString(1)%> type="hidden" value="<%=result.getString(2)%>">
         <% } %>
+        
         <header>
             <p><%=username%>님의 일정표입니다</p>
             <input id="logoutBtn" type="button" value="로그아웃" onclick="logoutEvent()">

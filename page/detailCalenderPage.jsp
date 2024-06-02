@@ -175,7 +175,7 @@
                         <p class="time" id=time_<%=result.getString(6)%>><%=result.getString(2)%>시 <%=result.getString(3)%>분</p>
                     </div>
                     <input id=updateBtn_<%=result.getString(6)%> type="button" value="수정" onclick="updateScheduleEvent('<%=result.getString(1)%>', <%=result.getString(2)%>, <%=result.getString(3)%>, <%=result.getString(6)%>)">
-                    <input id=deleteBtn_<%=result.getString(6)%> type="button" value="삭제" onclick="deleteScheduleEvent()">
+                    <input id=deleteBtn_<%=result.getString(6)%> type="button" value="삭제" onclick="deleteScheduleEvent(<%=result.getString(6)%>)">
                 <% } else { %>
                     <div class="schedule">
                         <p><%=result.getString(5)%>님</p>
