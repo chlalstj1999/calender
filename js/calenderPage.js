@@ -91,3 +91,13 @@ function excludeMemberScheduleEvent() {
     isMemberInclude = "memberExclude"
     location.href="calenderPage.jsp?year=" + currentYear + "&month=" + currentMonth + "&isMemberInclude=" + isMemberInclude
 }
+
+function isMeberIncludeButtonStyle() {
+    if (isMemberInclude === "memberInclude") {
+        document.getElementById("includeMemberBtn").style.color = "blue"
+    } else {
+        document.getElementById("excludeMemberBtn").style.color = "blue"
+    }
+}
+
+isMeberIncludeButtonStyle()
